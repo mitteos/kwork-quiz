@@ -133,6 +133,12 @@ main {
 .background__image:nth-child(10)::after {
   background: rgba(0, 0, 0, 0.2);
 }
+.background__image:nth-child(11) {
+  background: url("../img/screen8.png") no-repeat center/cover, lightgray 0px -883px/147.833% 296.987% no-repeat;
+}
+.background__image:nth-child(11)::after {
+  background: rgba(0, 0, 0, 0.2);
+}
 
 .header {
   display: flex;

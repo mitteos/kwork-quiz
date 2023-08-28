@@ -53,6 +53,34 @@ squareSlider.noUiSlider.on('update', function(value) {
     squareText.textContent = `${value} кв. м`
 })
 
+const squareWindowSlider = document.querySelector(".square__window-inner")
+const squareWindowValue = document.querySelector(".square__window-hide")
+const squareWindowText = document.querySelector(".square__window-text")
+
+noUiSlider.create(squareWindowSlider, {
+    start: 1,
+    connect: false,
+    step: 1,
+    range: {
+        'min': 1,
+        'max': 20
+    },
+    format: {
+        from: function(value) {
+            return parseInt(value);
+        },
+        to: function(value) {
+            return parseInt(value);
+        }
+    }
+})
+
+squareWindowSlider.noUiSlider.on('update', function(value) {
+    squareWindowValue.value = value
+    squareWindowText.textContent = `${value}`
+})
+
+
 
 
 // ------- Navigation ------- //
@@ -118,6 +146,12 @@ const screen = {
         background: background[9],
         nextBtn: nextBtns[7],
         prevBtn: prevBtns[7]
+    },
+    squareWindow: {
+        el: document.querySelector('.square__window'),
+        background: background[10],
+        nextBtn: nextBtns[8],
+        prevBtn: prevBtns[8]
     }
 }
 
@@ -295,7 +329,7 @@ screen.service.nextBtn.addEventListener('click', () => {
                 break
             case 2:
                 setScreen('optionsSecond')
-                stepCounter.textContent = '1/2'
+                stepCounter.textContent = '1/3'
                 break
             case 3:
                 setScreen('items')
@@ -349,35 +383,6 @@ screen.square.nextBtn.addEventListener('click', () => {
         cart += 6
     }
 
-    if(selectedService.indexOf("1") === 2) {
-        if(+selectedOptionsSecond[0] === 1) cart += 8
-        if(+selectedOptionsSecond[1] === 1) cart += 4
-        if(+selectedOptionsSecond[2] === 1) cart += 5
-        if(+selectedOptionsSecond[3] === 1) cart += 3
-
-        if(+selectedPreviously[0] === 1) cart += cart / 100 * 30
-        if(+selectedPreviously[1] === 1) cart += cart / 100 * 20
-        if(+selectedPreviously[2] === 1) cart += cart / 100 * 20
-    }
-
-    if(selectedService.indexOf("1") === 3) {
-        if(+selectedItems[0] === 1) cart += 0
-        if(+selectedItems[1] === 1) cart += 0
-        if(+selectedItems[2] === 1) cart += 0
-        if(+selectedItems[3] === 1) cart += 0
-        if(+selectedItems[4] === 1) cart += 0
-        if(+selectedItems[5] === 1) cart += 0
-        if(+selectedItems[6] === 1) cart += 0
-        if(+selectedItems[7] === 1) cart += 0
-
-        cart += +sliderValue.value * 20
-
-        if(+selectedSpeciaCleaning[0] === 1) cart += cart / 100 * 20
-        if(+selectedSpeciaCleaning[1] === 1) cart += cart / 100 * 20
-        if(+selectedSpeciaCleaning[2] === 1) cart += cart / 100 * 40 // 30-50
-    }
-
-
     cart = Math.round(cart * +squareValue.value)
     cartText.textContent = `${cart} ЛЕВА`
 
@@ -399,7 +404,7 @@ screen.square.prevBtn.addEventListener('click', () => {
 screen.optionsSecond.nextBtn.addEventListener('click', () => {
     if(selectedOptionsSecond.length) {
         setScreen('previously')
-        stepCounter.textContent = '2/2'
+        stepCounter.textContent = '2/3'
     }
 })
 screen.optionsSecond.prevBtn.addEventListener('click', () => {
@@ -409,13 +414,12 @@ screen.optionsSecond.prevBtn.addEventListener('click', () => {
 
 
 screen.previously.nextBtn.addEventListener('click', () => {
-    if (selectedPreviously.length) {
-        setScreen('request')
-    }
+    setScreen('squareWindow')
+    stepCounter.textContent = '3/3'
 })
 screen.previously.prevBtn.addEventListener('click', () => {
     setScreen('optionsSecond')
-    stepCounter.textContent = '1/2'
+    stepCounter.textContent = '1/3'
 })
 
 
@@ -432,9 +436,52 @@ screen.items.prevBtn.addEventListener('click', () => {
 
 
 screen.specialCleaning.nextBtn.addEventListener('click', () => {
+    if(selectedService.indexOf("1") === 3) {
+        if(+selectedItems[0] === 1) cart += 30
+        if(+selectedItems[1] === 1) cart += 40
+        if(+selectedItems[2] === 1) cart += 50
+        if(+selectedItems[3] === 1) cart += 65
+        if(+selectedItems[4] === 1) cart += 75
+        if(+selectedItems[5] === 1) cart += 85
+        if(+selectedItems[6] === 1) cart += 10
+        if(+selectedItems[7] === 1) cart += 20
+
+        cart += +sliderValue.value * 20
+
+        if(+selectedSpeciaCleaning[0] === 1) cart += cart / 100 * 20
+        if(+selectedSpeciaCleaning[1] === 1) cart += cart / 100 * 20
+        if(+selectedSpeciaCleaning[2] === 1) cart += cart / 100 * 40 // 30-50
+    }
+
+    cart = Math.round(cart)
+    cartText.textContent = `${cart} ЛЕВА`
+
     setScreen('request')
 })
 screen.specialCleaning.prevBtn.addEventListener('click', () => {
     setScreen('items')
     stepCounter.textContent = '1/2'
+})
+
+
+screen.squareWindow.nextBtn.addEventListener('click', () => {
+    if (selectedService.indexOf("1") === 2) {
+        if(+selectedOptionsSecond[0] === 1) cart += 15
+        if(+selectedOptionsSecond[1] === 1) cart += 15
+        if(+selectedOptionsSecond[2] === 1) cart += 15
+        if(+selectedOptionsSecond[3] === 1) cart += 15
+
+        if(+selectedPreviously[0] === 1) cart += cart / 100 * 30
+        if(+selectedPreviously[1] === 1) cart += cart / 100 * 20
+        if(+selectedPreviously[2] === 1) cart += cart / 100 * 20
+
+        cart = cart * +squareWindowValue.value
+        cart = Math.round(cart)
+        cartText.textContent = `${cart} ЛЕВА`
+        setScreen('request')
+    }
+})
+screen.squareWindow.prevBtn.addEventListener('click', () => {
+    setScreen('previously')
+    stepCounter.textContent = '2/3'
 })
