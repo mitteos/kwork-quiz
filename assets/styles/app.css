@@ -275,6 +275,7 @@ main {
   border-radius: 16px;
   background: #3F4623;
   border: none;
+  cursor: pointer;
 }
 @media (max-width: 786px) {
   .main__btn {
