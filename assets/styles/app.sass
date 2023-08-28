@@ -122,10 +122,13 @@ main
   display: flex
   justify-content: space-between
   &__step
+    display: none
     color: #F5F5F5
     font-size: 32px
     font-weight: 500
     line-height: 131.9%
+    &.active
+      display: block
     @media (max-width: 786px)
       font-size: 20px
       display: flex

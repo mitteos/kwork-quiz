@@ -148,10 +148,14 @@ main {
   justify-content: space-between;
 }
 .footer__step {
+  display: none;
   color: #F5F5F5;
   font-size: 32px;
   font-weight: 500;
   line-height: 131.9%;
+}
+.footer__step.active {
+  display: block;
 }
 @media (max-width: 786px) {
   .footer__step {

@@ -1,5 +1,6 @@
 const slider = document.querySelector(".items__slider-inner")
 const sliderValue = document.querySelector(".items__slider-input")
+
 let cart = 0
 const cartText = document.querySelector('.request__discount-count')
 
@@ -58,6 +59,8 @@ squareSlider.noUiSlider.on('update', function(value) {
 const background = document.querySelectorAll('.background__image')
 const nextBtns = document.querySelectorAll('.footer__next')
 const prevBtns = document.querySelectorAll('.footer__prev')
+const stepCounter = document.querySelector('.footer__step')
+
 const footer = document.querySelector('.footer')
 const screen = {
     main: {
@@ -284,17 +287,22 @@ screen.service.nextBtn.addEventListener('click', () => {
         switch (selectedId) {
             case 0:
                 setScreen('optionsFirst')
+                stepCounter.textContent = '1/3'
                 break
             case 1:
                 setScreen('square')
+                stepCounter.textContent = '1/1'
                 break
             case 2:
                 setScreen('optionsSecond')
+                stepCounter.textContent = '1/2'
                 break
             case 3:
                 setScreen('items')
+                stepCounter.textContent = '1/2'
                 break
         }
+        stepCounter.classList.add('active')
     }
 })
 screen.service.prevBtn.addEventListener('click', () => {
@@ -305,18 +313,22 @@ screen.service.prevBtn.addEventListener('click', () => {
 screen.optionsFirst.nextBtn.addEventListener('click', () => {
     if(selectedOptionsFirst.length) {
         setScreen('special')
+        stepCounter.textContent = '2/3'
     }
 })
 screen.optionsFirst.prevBtn.addEventListener('click', () => {
     setScreen('service')
+    stepCounter.classList.remove('active')
 })
 
 
 screen.special.nextBtn.addEventListener('click', () => {
     setScreen('square')
+    stepCounter.textContent = '3/3'
 })
 screen.special.prevBtn.addEventListener('click', () => {
     setScreen('optionsFirst')
+    stepCounter.textContent = '1/3'
 })
 
 
@@ -375,9 +387,11 @@ screen.square.nextBtn.addEventListener('click', () => {
 screen.square.prevBtn.addEventListener('click', () => {
     if(selectedService.indexOf("1") === 0) {
         setScreen('special')
+        stepCounter.textContent = '2/3'
     }
     if(selectedService.indexOf("1") === 1) {
         setScreen('service')
+        stepCounter.classList.remove('active')
     }
 })
 
@@ -385,10 +399,12 @@ screen.square.prevBtn.addEventListener('click', () => {
 screen.optionsSecond.nextBtn.addEventListener('click', () => {
     if(selectedOptionsSecond.length) {
         setScreen('previously')
+        stepCounter.textContent = '2/2'
     }
 })
 screen.optionsSecond.prevBtn.addEventListener('click', () => {
     setScreen('service')
+    stepCounter.classList.remove('active')
 })
 
 
@@ -399,16 +415,19 @@ screen.previously.nextBtn.addEventListener('click', () => {
 })
 screen.previously.prevBtn.addEventListener('click', () => {
     setScreen('optionsSecond')
+    stepCounter.textContent = '1/2'
 })
 
 
 screen.items.nextBtn.addEventListener('click', () => {
     if(selectedItems.length) {
         setScreen('specialCleaning')
+        stepCounter.textContent = '2/2'
     }
 })
 screen.items.prevBtn.addEventListener('click', () => {
     setScreen('service')
+    stepCounter.classList.remove('active')
 })
 
 
@@ -417,4 +436,5 @@ screen.specialCleaning.nextBtn.addEventListener('click', () => {
 })
 screen.specialCleaning.prevBtn.addEventListener('click', () => {
     setScreen('items')
+    stepCounter.textContent = '1/2'
 })
