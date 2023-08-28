@@ -1,0 +1,708 @@
+*, ::after, ::before
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+ol[class], ul[class]
+  padding: 0
+
+blockquote, body, dd, dl, figcaption, figure, h1, h2, h3, h4, li, ol, p, ul
+  margin: 0
+
+ol[class], ul[class]
+  list-style: none
+
+a, a:not([class])
+  text-decoration-skip-ink: auto
+  text-decoration: none
+
+img
+  display: block
+
+article > * + *
+  margin-top: 1em
+
+button, input, select, textarea
+  font: inherit
+
+body
+  min-height: 100vh
+  text-rendering: optimizeSpeed
+  position: relative
+  font-family: 'Montserrat', sans-serif
+  display: flex
+  flex-direction: column
+
+main
+  flex: auto
+
+.background
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -1
+  &__image
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    transition: all .3s ease
+    opacity: 0
+    &.active
+      opacity: 1
+    &::after
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+
+    &:nth-child(1)
+      background: url("../img/screen1.png") no-repeat center / cover, lightgray -373px -660px / 143.667% 288.616% no-repeat
+      &::after
+        background: rgba(0,0,0,0.1)
+
+    &:nth-child(2)
+      background: url("../img/screen2.png") no-repeat center / cover, lightgray 0px -883px / 147.833% 296.987% no-repeat
+      &::after
+        background: rgba(0,0,0,0.2)
+
+    &:nth-child(3)
+      background: url("../img/screen3.png") no-repeat center / cover, lightgray 0px -883px / 147.833% 296.987% no-repeat
+      &::after
+        background: rgba(0,0,0,0.2)
+
+    &:nth-child(4)
+      background: url("../img/screen4.png") no-repeat center / cover, lightgray 0px -883px / 147.833% 296.987% no-repeat
+      &::after
+        background: rgba(0,0,0,0.2)
+
+    &:nth-child(5)
+      background: url("../img/screen5.png") no-repeat center / cover, lightgray 0px -883px / 147.833% 296.987% no-repeat
+      &::after
+        background: rgba(0,0,0,0.2)
+
+    &:nth-child(6)
+      background: url("../img/screen6.png") no-repeat center / cover, lightgray 0px -883px / 147.833% 296.987% no-repeat
+      &::after
+        background: rgba(0,0,0,0.2)
+
+    &:nth-child(7)
+      background: url("../img/screen7.png") no-repeat center / cover, lightgray 0px -883px / 147.833% 296.987% no-repeat
+      &::after
+        background: rgba(0,0,0,0.3)
+
+    &:nth-child(8)
+      background: url("../img/screen8.png") no-repeat center / cover
+      &::after
+        background: rgba(0,0,0,0.3)
+
+    &:nth-child(9)
+      background: url("../img/screen9.png") no-repeat center / cover, lightgray -214.011px -1006px / 122.752% 246.429% no-repeat
+      &::after
+        background: rgba(0,0,0,0.2)
+
+    &:nth-child(10)
+      background: url("../img/screen6.png") no-repeat center / cover, lightgray 0px -883px / 147.833% 296.987% no-repeat
+      &::after
+        background: rgba(0,0,0,0.2)
+
+.header
+  display: flex
+  justify-content: center
+  padding: 48px 0 0 0
+
+.footer
+  max-width: 1145px
+  margin: 0 auto 20px auto
+  width: calc(1145/1200*100%)
+  display: flex
+  justify-content: space-between
+  &__step
+    color: #F5F5F5
+    font-size: 32px
+    font-weight: 500
+    line-height: 131.9%
+    @media (max-width: 786px)
+      font-size: 20px
+      display: flex
+      align-items: center
+  &__prev
+    border-radius: 16px
+    background: rgba(217, 217, 217, 0.30)
+    padding: 11px 15px
+    color: #F5F5F5
+    font-size: 22px
+    font-weight: 500
+    line-height: 131.9%
+    outline: none
+    border: none
+    display: none
+    align-items: center
+    gap: 21px
+    cursor: pointer
+    &.active
+      display: flex
+    @media (max-width: 786px)
+      font-size: 18px
+    @media (max-width: 450px)
+      gap: 10px
+  &__next
+    padding: 11px 15px
+    display: none
+    align-items: center
+    border-radius: 16px
+    background: rgba(63, 70, 35, 0.47)
+    gap: 21px
+    color: #F5F5F5
+    font-size: 22px
+    font-weight: 500
+    line-height: 131.9%
+    border: none
+    cursor: pointer
+    &.active
+      display: flex
+    @media (max-width: 786px)
+      font-size: 18px
+    @media (max-width: 450px)
+      gap: 10px
+
+.separator
+  background: #3F4623
+  width: 156px
+  height: 3px
+
+.main
+  margin: 164px 0 0 0
+  &__title
+    color: #F5F5F5
+    font-size: 56px
+    font-weight: 500
+    line-height: 131.9%
+    text-align: center
+    max-width: 1150px
+    width: calc(1150/1200*100%)
+    margin: 0 auto 37px auto
+    @media (max-width: 786px)
+      font-size: 34px
+  &__subtitle
+    color: #F5F5F5
+    text-align: center
+    font-size: 44px
+    font-weight: 400
+    line-height: 155.4%
+    margin: 0 auto 50px auto
+    max-width: 985px
+    width: calc(985/1200*100%)
+    @media (max-width: 786px)
+      font-size: 24px
+  &__title, &__subtitle
+    span
+      color: #3F4623
+  &__separator
+    margin: 0 auto 19px auto
+  &__nav
+    display: flex
+    justify-content: center
+  &__btn
+    color: rgba(255, 255, 255, 0.85)
+    text-align: center
+    font-size: 40px
+    font-weight: 500
+    line-height: 131.9%
+    padding: 21px 82px
+    border-radius: 16px
+    background: #3F4623
+    border: none
+    @media (max-width: 786px)
+      font-size: 25px
+
+.service
+  margin: 45px 0 0 0
+  &__title
+    color: #F5F5F5
+    text-align: center
+    font-size: 48px
+    font-weight: 500
+    line-height: 131.9%
+    max-width: 721px
+    margin: 0 auto 18px auto
+    @media (max-width: 786px)
+      font-size: 34px
+    span
+      color: #3F4623
+  &__separator
+    margin: 0 auto 18px auto
+  &__subtitle
+    max-width: 1045px
+    margin: 0 auto 88px auto
+    color: #F5F5F5
+    text-align: center
+    font-size: 32px
+    font-weight: 400
+    line-height: 120%
+    width: 90%
+    @media (max-width: 786px)
+      font-size: 25px
+  &__container
+    display: flex
+    justify-content: center
+  .list
+    &__item
+      @media (max-width: 786px)
+        font-size: 20px
+
+
+
+.list
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 29px
+  &__box
+    display: inline-block
+    width: 46px
+    height: 46px
+    border-radius: 4px
+    border: 3px solid #F5F5F5
+    vertical-align: sub
+    position: relative
+    &::after
+      content: ""
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%) scale(0)
+      background: #fff
+      width: 80%
+      height: 80%
+      border-radius: 4px
+      transition: all .3s ease
+  li
+    align-self: flex-start
+  &__input
+    width: 0
+    height: 0
+    position: absolute
+    opacity: 0
+    z-index: -1
+    &:checked + .list__box::after
+      transform: translate(-50%, -50%) scale(1)
+  &__item
+    cursor: pointer
+    display: flex
+    align-items: center
+    gap: 40px
+    color: #F5F5F5
+    font-size: 40px
+    font-weight: 500
+    line-height: 131.9%
+
+.title
+  color: #F5F5F5
+  text-align: center
+  font-size: 48px
+  font-weight: 500
+  line-height: 131.9%
+  span
+    color: #3F4623
+.subtitle
+  color: #F5F5F5
+  text-align: center
+  font-size: 32px
+  font-weight: 400
+  line-height: 120%
+  max-width: 844px
+
+.options
+  margin: 38px auto 50px auto
+
+  &__title
+    margin: 0 auto 18px auto
+    span
+      color: #3F4623
+    @media (max-width: 786px)
+      font-size: 34px
+  &__separator
+    margin: 0 auto 18px auto
+  &__subtitle
+    margin: 0 auto 50px auto
+    width: 90%
+    @media (max-width: 786px)
+      font-size: 25px
+  &__container
+    display: flex
+    justify-content: center
+    width: 90%
+    margin: 0 auto
+  .list
+    gap: 35px
+    &__item
+      color: #F5F5F5
+      text-align: center
+      font-size: 36px
+      font-weight: 500
+      line-height: 131.9%
+      @media (max-width: 1000px)
+        font-size: 24px
+      @media (max-width: 786px)
+        font-size: 18px
+    &__mark
+      color: #3F4623
+    &__box
+      min-width: 46px
+
+
+.items
+  margin: 38px auto 50px auto
+  &__title
+    margin: 0 auto 18px auto
+    width: 90%
+    @media (max-width: 786px)
+      font-size: 34px
+  &__subtitle
+    width: 90%
+    max-width: 100%
+    margin: 0 auto 39px auto
+    @media (max-width: 786px)
+      font-size: 25px
+  &__separator
+    margin: 0 auto 18px auto
+  &__container
+    display: flex
+    align-items: flex-start
+    justify-content: space-around
+    margin: 0 auto 57px auto
+    .list
+      gap: 18px
+      @media (max-width: 800px)
+        min-width: 390px
+      &__item
+        gap: 40px
+        font-size: 28px
+      &__box
+        border-radius: 100%
+        width: 36px
+        height: 36px
+        &::after
+          border-radius: 100%
+    @media (max-width: 800px)
+      flex-direction: column
+      align-items: center
+      gap: 18px
+  .slider
+    display: flex
+    flex-direction: column
+    gap: 35px
+    position: relative
+    &__background
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      background: rgba(255, 255, 255, 0.50)
+      filter: blur(50px)
+      z-index: -1
+  &__slider
+    max-width: 953px
+    width: 90%
+    margin: 0 auto
+    display: flex
+    align-items: center
+    @media (max-width: 1100px)
+      width: 70%
+    &-input
+      position: absolute
+      width: 0
+      height: 0
+      opacity: 0
+      visibility: hidden
+    &-title
+      color: #3F4623
+      text-align: center
+      font-size: 36px
+      font-weight: 500
+      @media (max-width: 786px)
+        font-size: 24px
+        width: 90%
+        margin: 0 auto
+    &-inner
+      flex: auto
+    .noUi-target
+      background: #A1A1A1
+      border: none
+      box-shadow: none
+      height: 5px
+    .noUi-tooltip
+      border-radius: 100%
+      width: 76px
+      height: 76px
+      background: #3F4623
+      color: #F5F5F5
+      text-align: center
+      font-size: 36px
+      font-weight: 600
+      border: none
+      display: flex
+      justify-content: center
+      align-items: center
+      top: 0
+      bottom: 0
+      transform: translate(-50%,-50%)
+    .noUi-touch-area
+      display: none
+    .noUi-handle:after, .noUi-handle:before
+      display: none
+    .noUi-horizontal .noUi-handle
+      width: 0
+      height: 0
+      top: 0
+
+
+    &-start
+      width: 46px
+      height: 46px
+      border-radius: 100%
+      background: #3F4623
+      display: flex
+      align-items: center
+      justify-content: center
+      position: relative
+      z-index: 1
+      margin-right: -30px
+      div
+        color: #FFF
+        font-size: 20px
+        font-weight: 600
+
+.special
+  margin: 39px auto 50px auto
+  &__title
+    margin: 0 auto 18px auto
+    width: 90%
+    @media (max-width: 786px)
+      font-size: 34px
+  &__separator
+    margin: 0 auto 18px auto
+  &__subtitle
+    margin: 0 auto 77px auto
+    max-width: 897px
+    width: 90%
+    @media (max-width: 786px)
+      font-size: 25px
+  &__container
+    display: flex
+    justify-content: center
+    width: 90%
+    margin: 0 auto
+  .list
+    gap: 31px
+    &__box
+      width: 56px
+      height: 56px
+      border-radius: 100%
+      min-width: 56px
+      &::after
+        border-radius: 100%
+    &__item
+      @media (max-width: 786px)
+        font-size: 18px
+
+.previously
+  margin: 38px auto 50px auto
+  &__title
+    margin: 0 auto 18px auto
+    width: 90%
+    @media (max-width: 786px)
+      font-size: 34px
+  &__separator
+    margin: 0 auto 18px auto
+  &__subtitle
+    max-width: 894px
+    width: 90%
+    margin: 0 auto 64px auto
+    @media (max-width: 786px)
+      font-size: 25px
+  &__container
+    display: flex
+    justify-content: center
+    width: 90%
+    margin: 0 auto
+    .list
+      gap: 16px
+      &__box
+        border-radius: 100%
+        width: 56px
+        height: 56px
+        min-width: 56px
+        &::after
+          border-radius: 100%
+      &__item
+        &-text
+          max-width: 802px
+          line-height: 100%
+          @media (max-width: 786px)
+            font-size: 18px
+
+.square
+  margin: 38px auto 50px auto
+  &__title
+    color: #F5F5F5
+    text-align: center
+    font-size: 68px
+    font-weight: 500
+    line-height: 131.9%
+    margin: 0 auto 29px auto
+    width: 90%
+    span
+      color: #3F4623
+    @media (max-width: 786px)
+      font-size: 34px
+  &__separator
+    margin: 0 auto 28px auto
+  &__subtitle
+    color: #F5F5F5
+    text-align: center
+    font-size: 42px
+    font-weight: 400
+    line-height: 120.9%
+    max-width: 884px
+    margin: 0 auto 73px auto
+    width: 90%
+    @media (max-width: 786px)
+      font-size: 25px
+  &__slider
+    max-width: 885px
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    gap: 17px
+    width: 90%
+    &-inner
+      flex: auto
+    &-container
+      display: flex
+      align-items: center
+    .noUi-target
+      height: 6px
+      border-bottom-right-radius: 0
+      border-top-right-radius: 0
+      background: #fff
+      box-shadow: none
+      border: none
+    .noUi-handle:after, .noUi-handle:before
+      display: none
+    .noUi-handle
+      width: 28px
+      height: 88px
+      border-radius: 4px
+      background: #3F4623
+      border: none
+      box-shadow: none
+      top: 0
+      transform: translate(0, -50%)
+
+  &__input
+    width: 167px
+    padding: 26px 0
+    display: flex
+    justify-content: center
+    border-radius: 16px
+    background: #3F4623
+    align-self: center
+    &-hide
+      position: absolute
+      width: 0
+      height: 0
+      opacity: 0
+      visibility: hidden
+    &-text
+      color: #FFF
+      text-align: center
+      font-size: 28px
+      font-weight: 600
+      line-height: 131.9%
+
+.request
+  margin: 38px auto 40px auto
+  &__title
+    color: #F5F5F5
+    text-align: center
+    font-size: 64px
+    font-weight: 500
+    line-height: 131.9%
+    margin: 0 auto 40px auto
+    max-width: 868px
+    width: 90%
+    span
+      color: #3F4623
+    @media (max-width: 850px)
+      font-size: 46px
+  &__form
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 99px
+    margin: 0 0 49px
+    @media (max-width: 800px)
+      gap: 40px
+    &-input
+      color: #FFF
+      font-size: 28px
+      font-weight: 400
+      padding: 12px 0
+      background: none
+      border: none
+      border-bottom: 2px solid #F5F5F5
+      width: 302px
+      &:focus
+        outline: none
+    &-btn
+      color: #F5F5F5
+      font-size: 32px
+      font-weight: 500
+      border-radius: 16px
+      background: #3F4623
+      cursor: pointer
+      padding: 28px
+      text-align: center
+      width: 342px
+  &__row
+    display: flex
+    gap: 126px
+    @media (max-width: 800px)
+      flex-direction: column
+      gap: 20px
+      align-items: center
+  &__discount
+    &-title
+      color: rgba(255, 255, 255, 0.50)
+      text-align: center
+      font-size: 32px
+      font-weight: 500
+      line-height: 157.9%
+      margin: 0 auto 35px auto
+      width: 90%
+      @media (max-width: 800px)
+        font-size: 24px
+    &-count
+      color: #F5F5F5
+      font-size: 48px
+      font-weight: 500
+      line-height: 157.9%
+      text-align: center
+      @media (max-width: 600px)
+        font-size: 30px
+::-webkit-input-placeholder
+  color: rgba(255, 255, 255, 0.50)
+
+
+
+.visible
+  display: block
+.hidden
+  display: none
