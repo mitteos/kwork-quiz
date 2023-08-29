@@ -466,10 +466,10 @@ screen.specialCleaning.prevBtn.addEventListener('click', () => {
 
 screen.squareWindow.nextBtn.addEventListener('click', () => {
     if (selectedService.indexOf("1") === 2) {
-        if(+selectedOptionsSecond[0] === 1) cart += 15
-        if(+selectedOptionsSecond[1] === 1) cart += 15
-        if(+selectedOptionsSecond[2] === 1) cart += 15
-        if(+selectedOptionsSecond[3] === 1) cart += 15
+        if(+selectedOptionsSecond[0] === 1) cart += 20
+        if(+selectedOptionsSecond[1] === 1) cart += 10
+        if(+selectedOptionsSecond[2] === 1) cart += 8
+        if(+selectedOptionsSecond[3] === 1) cart += 6
 
         if(+selectedPreviously[0] === 1) cart += cart / 100 * 30
         if(+selectedPreviously[1] === 1) cart += cart / 100 * 20
